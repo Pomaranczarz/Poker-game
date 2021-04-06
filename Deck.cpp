@@ -331,60 +331,11 @@ void Deck::change_cards()
 	int index;
 	Card* temp = nullptr;
 	std::vector<Card*>::iterator it;
-	switch (num)
-	{
-	case 0:
+	if (num == 0)
 		return;
-	case 1:
-		it = this->deck.begin();
-		std::cout << "Which card do you want to change?" << std::endl;
-		std::cin >> index;
-		while (index < 0 || index > 5)
-		{
-			std::cout << "Please enter valid number!" << std::endl;
-			std::cin >> index;
-		}
-		temp = this->hand[index - 1];
-		it = this->deck.insert(it + this->getSize(), temp);
-		this->hand.erase(this->hand.begin() + index - 1);
-		this->hand.push_back(this->rollCard());
-		break;
-	case 2:
-		for (int i = 0; i < 2; i++)
-		{
-			it = this->deck.begin();
-			std::cout << "Which card do you want to change?" << std::endl;
-			std::cin >> index;
-			while (index < 0 || index > 5)
-			{
-				std::cout << "Please enter valid number!" << std::endl;
-				std::cin >> index;
-			}
-			temp = this->hand[index - 1];
-			it = this->deck.insert(it + this->getSize(), temp);
-			this->hand.erase(this->hand.begin() + index - 1 - i);
-			this->hand.push_back(this->rollCard());
-		}
-		break;
-	case 3:
-		for (int i = 0; i < 3; i++)
-		{
-			it = this->deck.begin();
-			std::cout << "Which card do you want to change?" << std::endl;
-			std::cin >> index;
-			while (index < 0 || index > 5)
-			{
-				std::cout << "Please enter valid number!" << std::endl;
-				std::cin >> index;
-			}
-			temp = this->hand[index - 1];
-			it = this->deck.insert(it + this->getSize(), temp);
-			this->hand.erase(this->hand.begin() + index - 1 - i);
-			this->hand.push_back(this->rollCard());
-		}
-		break;
-	case 4:
-		for (int i = 0; i < 4; i++)
+	else 
+	{
+		for (int i = 0; i < num; i++)
 		{
 			it = this->deck.begin();
 			std::cout << "Which card do you want to change?" << std::endl;
@@ -401,7 +352,6 @@ void Deck::change_cards()
 		}
 		break;
 	}
-
 }
 
 void Deck::change_hand()
